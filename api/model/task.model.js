@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const taskSchema = new mongoose.Schema({ task: 'string', 
+const taskSchema = new mongoose.Schema({ 
+                task: 'string', 
                 assignee: 'string', 
                 status: 'string', 
                 createDate: 'date', 
@@ -13,4 +14,4 @@ const Task = mongoose.model('tasks', taskSchema);
 
 module.exports = {
     Task
-}
+}  

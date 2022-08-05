@@ -17,5 +17,5 @@ class APILogger {
         logger.error(message);
     }
 }
-
+ 
 module.exports = new APILogger();

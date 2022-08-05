@@ -25,7 +25,7 @@ app.get('/api/tasks', (req, res) => {
 });
 
 app.post('/api/task', (req, res) => {
-    console.log(req.body);
+    console.log("hellow"+req.body);
     taskController.createTask(req.body.task).then(data => res.json(data));
 });
 

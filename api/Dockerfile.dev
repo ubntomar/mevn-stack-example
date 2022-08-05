@@ -2,18 +2,18 @@
 FROM node:14-slim
 
 # Setting Working Directory
-WORKDIR /usr/app
+#WORKDIR /usr/app
 
 # Copying only package.json
-COPY package*.json ./
+#COPY package*.json ./
 
 # Install Dependencies
-RUN npm install
+#RUN npm install
 
 # Copy rest of the code to container
-COPY . .
+#COPY . .
 
-EXPOSE 3080
+#EXPOSE 3080
 
 # Run the API on Nodemon
-CMD ["npm", "run", "dev"]
+#CMD ["echo", "helloWorld"]

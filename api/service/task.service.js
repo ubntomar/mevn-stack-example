@@ -1,7 +1,7 @@
 const taskRepository  = require('../repository/task.repository');
 
 class TaskService {
-
+ 
     constructor() {}
 
     async getTasks() {

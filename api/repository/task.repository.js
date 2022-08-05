@@ -4,7 +4,7 @@ const logger = require('../logger/api.logger');
 
 class TaskRepository {
 
-    constructor() {
+    constructor() { 
         connect();
     }
 

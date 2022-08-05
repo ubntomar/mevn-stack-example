@@ -19,16 +19,18 @@ services:
    tty: true
 
   api:
-   build:
-      context: ./api
-      dockerfile: Dockerfile.dev
+   image: node:latest
    ports:
      - 3080:3080
    container_name: mevn-api
    networks:
      - mevn-stack-net
    volumes:
-    - ./api/src:/usr/app/src
+    - ./api:/usr/app
+   working_dir: "/usr/app"
+   stdin_open: true
+   tty: true
+   command: bash
    depends_on:
     - db
 

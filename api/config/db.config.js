@@ -11,7 +11,7 @@ const connect = () => {
         useFindAndModify: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
-    })
+    }) 
 
     mongoose.connection.once("open", async () => {
         logger.info("Connected to database");
