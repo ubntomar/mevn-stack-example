@@ -25,8 +25,10 @@ const updateTask= async (req,res)=>{
 const deleteTask= async (req,res)=>{
     if(req.params.id){
         try {
-            await taskService.deleteTask(req.params.id)
-            res.status(200).send( {  message:"Deleted" } )
+            const message= await taskService.deleteTask(req.params.id)
+            if(!message.deletedCount)
+                throw { status:400 , message: "Object don't exist" }
+            res.status(200).send( {  message: "Deleted O.K" } )
         } catch (error) {
             res.status(error.status).send( { message: error.message } )        
         }

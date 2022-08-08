@@ -27,7 +27,7 @@ connect()
     const deleteTask= async (id)=>{
         try {
             const filter={ _id: id }
-            await Task.deleteOne(filter)
+            return await Task.deleteOne(filter)
         } catch (error) {
             throw{
                 status: 500,
