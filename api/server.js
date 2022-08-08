@@ -17,5 +17,5 @@ app.use("/api/v2/tasks",v2Router)
 
 
 app.listen(port, () => {
-    console.log(`Server listening on the port  ${port}`);
+    console.log(`Server listening on the port  ${port}  http://localhost:3080/api/v2/tasks   `);
 })

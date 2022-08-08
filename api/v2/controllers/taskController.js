@@ -2,17 +2,43 @@ const taskService= require("../services/taskService")
 
 const getAllTasks=async(req,res)=>{
     const allTasks= await taskService.getAllTasks()
-
     res.status(200).send({"payload":allTasks})
 }
 
-const createNewTask= (req,res)=>{
-    res.send("i am the file that creat controller")
+const createNewTask=async (req,res)=>{
+    const newTask=await taskService.createNewTask(req.body.tasks)
+    res.status(201).send( { message: newTask } )
 }
 
+const updateTask= async (req,res)=>{
+    if(req.params.id){
+        try {
+            const updatedTask=await taskService.updateTask(req,res)
+            res.status(201).send( {  message:updatedTask } )
+        } catch (error) {
+            res.status(error.status).send( { message: error.message } )        
+        }
+    }else{
+        req.status(400).send( { message: "Id param is missing" } )
+    }
+}
+const deleteTask= async (req,res)=>{
+    if(req.params.id){
+        try {
+            await taskService.deleteTask(req.params.id)
+            res.status(200).send( {  message:"Deleted" } )
+        } catch (error) {
+            res.status(error.status).send( { message: error.message } )        
+        }
+    }else{
+        req.status(400).send( { message: "Id param is missing" } )
+    }
+}
 
 module.exports={
     getAllTasks,
-    createNewTask
+    createNewTask,
+    updateTask,
+    deleteTask
 }
 

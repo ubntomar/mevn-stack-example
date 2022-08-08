@@ -4,6 +4,9 @@ const taskController=require("../controllers/taskController")
 
 
 router.get("/",taskController.getAllTasks)
+router.post("/",taskController.createNewTask)
+router.put("/:id",taskController.updateTask)
+router.delete("/:id",taskController.deleteTask)
 
 
 
