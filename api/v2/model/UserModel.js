@@ -24,7 +24,7 @@ const userSchema= new mongoose.Schema({
 }
 )
 
-userSchema.statics.encryptPassword= async (password){
+userSchema.statics.encryptPassword= async (password)=>{
     const salted= await bcrypt.genSalt(10)
     return await bcrypt.hash(password,salted)
 }
