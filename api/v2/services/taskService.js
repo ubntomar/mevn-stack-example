@@ -1,7 +1,4 @@
-const { connect, disconnect } = require('../database/dbConfig');
-const { Task } = require('../model/taskModel');
-
-connect()
+const { Task } = require('../model/TaskModel');
 
     const getAllTasks=async ()=> {
         const tasks = await Task.find( {} );

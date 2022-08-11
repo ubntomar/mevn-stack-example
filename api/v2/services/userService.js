@@ -1,0 +1,30 @@
+const { User }= require("../model/UserModel")
+const Role= require("../model/RoleModel")
+
+const getAllUsers= async ()=>{
+    const users=await  User.find({})
+    return users
+}
+
+const createNewUser= async ( newUser )=>{
+    const user=await new User(newUser).save()
+    return user
+}
+
+const deleteUser= async (filter)=>{
+    try {
+        await User.deleteOne(filter)
+    } catch (error) {
+        throw{
+            status: 500,
+            message: `Failed deleting user ${filter} `
+        }        
+    }
+    return
+}
+
+module.exports={
+    getAllUsers,
+    createNewUser,
+    deleteUser
+}

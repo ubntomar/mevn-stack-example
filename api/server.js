@@ -2,17 +2,22 @@ require('dotenv').config()
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const v2Router= require("./v2/routes/taskRoutes")
+const v2TaskRouter= require("./v2/routes/taskRoutes")
+const v2UserRouter= require("./v2/routes/userRoutes")
+const { connectToDB }= require("./v2/database/dbConfig")
+
+connectToDB()
+
 const port = process.env.PORT;
 
 //** THIS IS RUNNIG IN MENV DOCKER-COMPOSE , DONT FORGET! */
 
 const app = express();
 
-//app.use(express.static(path.join(__dirname, './ui/build')));
 app.use(bodyParser.json());
 
-app.use("/api/v2/tasks",v2Router) 
+//app.use("/api/v2/tasks",v2TaskRouter)
+app.use("/api/v2/users",v2UserRouter) 
 
 
 
