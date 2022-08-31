@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const v2TaskRouter= require("./v2/routes/taskRoutes")
 const v2UserRouter= require("./v2/routes/userRoutes")
+const v2RoleRouter= require("./v2/routes/roleRouter")
 const { connectToDB }= require("./v2/database/dbConfig")
 
 connectToDB()
@@ -16,8 +17,9 @@ const app = express();
 
 app.use(bodyParser.json());
 
-//app.use("/api/v2/tasks",v2TaskRouter)
-app.use("/api/v2/users",v2UserRouter) 
+app.use("/api/v2/tasks",v2TaskRouter)
+app.use("/api/v2/users",v2UserRouter)
+app.use("/api/v2/roles",v2RoleRouter) 
 
 
 

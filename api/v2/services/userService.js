@@ -7,7 +7,21 @@ const getAllUsers= async ()=>{
 }
 
 const createNewUser= async ( newUser )=>{
-    const user=await new User(newUser).save()
+    const { name, username, password, email, roles } = newUser
+
+    const rolesFound= await Role.find( {
+        name: { $in: roles }        
+    } )
+
+    const userToSave={
+        name,
+        username,
+        password,
+        email,
+        roles: rolesFound.map((role)=>role._id)
+    }
+    
+    const user=await new User(userToSave).save()
     return user
 }
 
